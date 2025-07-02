@@ -18,6 +18,9 @@
         <main>
             <h3>Hello this is the homepage</h3>
             <form action="/register" method="POST">
+                <% errors.forEach(error =>{ %>
+                <p class="notice"><%= error %></p>
+                <% })%>
                 <fieldset>
                     <legend>Create an account</legend>
                     <label for="username"><small>Username</small></label>
