@@ -4,11 +4,19 @@
     <body>
         <%- include("includes/header"); %>
         <main>
-            <h2>Welcome to your dashboard</h2>
-            <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni quod quibusdam, molestias perferendis tempora quasi fugiat ad, vel sint rem earum, assumenda sunt aspernatur laboriosam. Amet eaque quis
-                nisi enim?
-            </p>
+            <% if(posts.length == 0){ %>
+            <h4>Hello <%= user.username %>, you do not have any posts yet</h4>
+            <% }else{ %>
+            <h4>Hello <%= user.username %>, here are your posts</h4>
+            <%}%>
+
+            <ul>
+                <% posts.forEach(post => { %>
+                <li>
+                    <a href="/post/<%= post.id %>"><%= post.title %></a> on <%= new Date(post.createdDate).getMonth() + 1 %>/<%= new Date(post.createdDate).getDate() %>/<%= new Date(post.createdDate).getFullYear() %>
+                </li>
+                <% }) %>
+            </ul>
         </main>
         <%- include("includes/footer"); %>
     </body>
